@@ -1,0 +1,23 @@
+%w(git emacs).each do |pkg|
+  package pkg
+end
+
+execute 'clone devstack repo' do
+  command "rm -rf devstack && git clone https://github.com/openstack-dev/devstack.git"
+  cwd node['devstack_cookbook']['src_path']
+end
+
+template "#{node['devstack_cookbook']['devstack_path']}/localrc" do
+  source 'localrc.erb'
+  variables({database_password: node['devstack_cookbook']['database_password'],
+             rabbit_password: node['devstack_cookbook']['rabbit_password'],
+             service_token: : node['devstack_cookbook']['service_token'],
+             service_password: node['devstack_cookbook']['service_password'],
+             admin_password: node['devstack_cookbook']['admin_password']})
+end
+
+execute 'install devstack' do
+  command './stack.sh'
+  user 'vagrant'
+  cwd node['devstack_cookbook']['devstack_path']
+end

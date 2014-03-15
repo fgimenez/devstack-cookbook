@@ -1,0 +1,7 @@
+{
+  "sources": {
+    "devstack-cookbook": {
+      "path": "."
+    }
+  }
+}
