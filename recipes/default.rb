@@ -11,7 +11,7 @@ template "#{node['devstack_cookbook']['devstack_path']}/localrc" do
   source 'localrc.erb'
   variables({database_password: node['devstack_cookbook']['database_password'],
              rabbit_password: node['devstack_cookbook']['rabbit_password'],
-             service_token: : node['devstack_cookbook']['service_token'],
+             service_token: node['devstack_cookbook']['service_token'],
              service_password: node['devstack_cookbook']['service_password'],
              admin_password: node['devstack_cookbook']['admin_password']})
 end

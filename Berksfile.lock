@@ -1,6 +1,6 @@
 {
   "sources": {
-    "devstack-cookbook": {
+    "devstack_cookbook": {
       "path": "."
     }
   }

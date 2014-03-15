@@ -7,14 +7,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
   
-  config.vm.box = "saucy-ubuntu"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/saucy/20140312/saucy-server-cloudimg-amd64-vagrant-disk1.box"
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
+
+  config.vm.box = "precise-ubuntu"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/precise/20140303/precise-server-cloudimg-amd64-vagrant-disk1.box"
   
   config.vm.network :private_network, ip: "33.33.33.11"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096", '--cpus', '4']
   end
+
+  config.vm.hostname = 'devstack.local'
   
   config.vm.provision :chef_solo do |chef|
     chef.json = {
