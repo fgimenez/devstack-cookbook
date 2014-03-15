@@ -3,7 +3,7 @@
 end
 
 execute 'clone devstack repo' do
-  command "rm -rf devstack && git clone https://github.com/openstack-dev/devstack.git"
+  command "sudo rm -rf devstack && git clone https://github.com/openstack-dev/devstack.git && chown -R vagrant:vagrant ./devstack"
   cwd node['devstack_cookbook']['src_path']
 end
 
