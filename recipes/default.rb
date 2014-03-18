@@ -17,8 +17,10 @@ template "#{node['devstack_cookbook']['devstack_path']}/localrc" do
   user 'vagrant'
 end
 
+=begin
 execute 'install devstack' do
   command './stack.sh'
   user 'vagrant'
   cwd node['devstack_cookbook']['devstack_path']
 end
+=end

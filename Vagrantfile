@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.include_offline = true
 
   config.vm.box = "precise-ubuntu"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/precise/20140303/precise-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
   
   config.vm.network :private_network, ip: "33.33.33.11"
 
@@ -29,4 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
 
+  #config.vm.synced_folder "src/horizon", "/opt/stack/horizon"
+  #config.sh.after_share_folders = 'cd ~/devstack && ./stack.sh'
 end
