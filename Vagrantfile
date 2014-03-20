@@ -29,5 +29,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
 
-  config.vm.synced_folder "src/horizon", "/opt/stack/horizon"
+  #config.vm.synced_folder "src/horizon", "/opt/stack/horizon"
 end
