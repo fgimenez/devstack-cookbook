@@ -1,4 +1,4 @@
-%w(git).each do |pkg|
+%w(git emacs).each do |pkg|
   package pkg
 end
 
@@ -16,11 +16,3 @@ template "#{node['devstack_cookbook']['devstack_path']}/localrc" do
              admin_password: node['devstack_cookbook']['admin_password']})
   user 'vagrant'
 end
-
-=begin
-execute 'install devstack' do
-  command './stack.sh'
-  user 'vagrant'
-  cwd node['devstack_cookbook']['devstack_path']
-end
-=end
