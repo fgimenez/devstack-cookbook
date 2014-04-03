@@ -29,5 +29,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
 
-  #config.vm.synced_folder "src/horizon", "/opt/stack/horizon"
+  config.sh.after_share_folders = 'cd ~/devstack && sudo losetup -f /opt/stack/data/stack-volumes-backing-file && ./rejoin-stack.sh'
 end
