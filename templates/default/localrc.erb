@@ -3,3 +3,35 @@ RABBIT_PASSWORD=<%= @rabbit_password %>
 SERVICE_PASSWORD=<%= @service_password %>
 SERVICE_TOKEN=<%= @service_token %>
 ADMIN_PASSWORD=<%= @admin_password %>
+
+#Swift Requirements
+SWIFT_REPLICAS=1
+SWIFT_HASH=011688b44136573e209e
+
+#Enabled services
+##Neutron
+disable_service n-net
+enable_service q-svc
+enable_service q-agt
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+enable_service neutron
+
+##Swift
+enable_service s-proxy s-object s-container s-account
+
+##Heat
+ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+IMAGE_URLS+=",http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools.qcow2"
+
+##Ceilometer
+ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
+ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
+
+
+#Log Output
+LOGFILE=/opt/stack/logs/stack.sh.log
+VERBOSE=True
+LOG_COLOR=False
+SCREEN_LOGDIR=/opt/stack/logs
