@@ -5,6 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
+
   config.berkshelf.enabled = true
   
   config.hostmanager.enabled = true
@@ -18,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :private_network, ip: "33.33.33.11"
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "4096", '--cpus', '4']
+    vb.customize ["modifyvm", :id, "--memory", "6020", '--cpus', '4']
   end
 
   config.vm.hostname = 'devstack.local'

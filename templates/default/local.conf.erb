@@ -1,0 +1,37 @@
+[[local|localrc]]
+DATABASE_PASSWORD=<%= @database_password %>
+RABBIT_PASSWORD=<%= @rabbit_password %>
+SERVICE_PASSWORD=<%= @service_password %>
+SERVICE_TOKEN=<%= @service_token %>
+ADMIN_PASSWORD=<%= @admin_password %>
+
+#Log Output
+LOGFILE=$DEST/logs/stack.sh.log
+VERBOSE=True
+LOG_COLOR=False
+SCREEN_LOGDIR=$DEST/logs
+
+#Swift Requirements
+SWIFT_HASH=011688b44136573e209e
+
+##Swift
+disable_service n-obj
+enable_service s-proxy s-object s-container s-account
+
+#Enabled services
+##Neutron
+#disable_service n-net
+#enable_service q-svc
+#enable_service q-agt
+#enable_service q-dhcp
+#enable_service q-l3
+#enable_service q-meta
+#enable_service neutron
+
+##Heat
+#ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+
+##Ceilometer
+#ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
+#ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
+

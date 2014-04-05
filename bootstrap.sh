@@ -1,14 +1,14 @@
 #!/bin/sh
 bundle
 
-vagrant plugin install vagrant-berkshelf
+vagrant plugin install vagrant-berkshelf --plugin-version 2.0.0.rc2
 vagrant plugin install vagrant-omnibus
 vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-shell-commander
 
 vagrant hostmanager
 
-vagrant destroy
+vagrant destroy -f
 vagrant up --provision
 
 vagrant sh -c 'cd ~/devstack && ./stack.sh'

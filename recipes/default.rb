@@ -7,8 +7,8 @@ execute 'clone devstack repo' do
   cwd node['devstack_cookbook']['src_path']
 end
 
-template "#{node['devstack_cookbook']['devstack_path']}/localrc" do
-  source 'localrc.erb'
+template "#{node['devstack_cookbook']['devstack_path']}/local.conf" do
+  source 'local.conf.erb'
   variables({database_password: node['devstack_cookbook']['database_password'],
              rabbit_password: node['devstack_cookbook']['rabbit_password'],
              service_token: node['devstack_cookbook']['service_token'],

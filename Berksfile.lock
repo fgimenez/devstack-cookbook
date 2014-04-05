@@ -1,7 +1,7 @@
-{
-  "sources": {
-    "devstack_cookbook": {
-      "path": "."
-    }
-  }
-}
+DEPENDENCIES
+  devstack_cookbook
+    path: .
+    metadata: true
+
+GRAPH
+  devstack_cookbook (0.1.0)
