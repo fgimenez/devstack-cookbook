@@ -29,6 +29,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       run_list: ['recipe[devstack_cookbook::default]']
     }
   end
-
-  config.sh.after_share_folders = 'cd ~/devstack && sudo losetup -f /opt/stack/data/stack-volumes-backing-file && ./rejoin-stack.sh'
 end

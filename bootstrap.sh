@@ -1,7 +1,7 @@
 #!/bin/sh
 bundle
 
-vagrant plugin install vagrant-berkshelf --plugin-version 2.0.0.rc2
+vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
 vagrant plugin install vagrant-omnibus
 vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-shell-commander
