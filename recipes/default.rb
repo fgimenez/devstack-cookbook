@@ -1,3 +1,5 @@
+include_recipe 'apt'
+
 %w(git git-review emacs).each do |pkg|
   package pkg
 end
