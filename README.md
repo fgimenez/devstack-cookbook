@@ -1,4 +1,4 @@
-This cookbook sets up a devstack (http://devstack.org/) vm based on Vagrant (1.4+) and VirtualBox. Just:
+This cookbook sets up an up to date devstack vm (http://devstack.org/) based on Vagrant (1.4+) and VirtualBox. Just:
 
     ./bootstrap.sh
 
