@@ -1,7 +1,9 @@
 #!/bin/sh
 bundle
 
-vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
+rm -rf vendor/cookbooks
+bundle exec berks vendor vendor/cookbooks 
+
 vagrant plugin install vagrant-omnibus
 vagrant plugin install vagrant-hostmanager
 vagrant plugin install vagrant-shell-commander

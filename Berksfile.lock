@@ -4,6 +4,6 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  apt (2.4.0)
+  apt (2.6.0)
   devstack_cookbook (0.1.0)
     apt (>= 0.0.0)

@@ -6,8 +6,6 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
 
-  config.berkshelf.enabled = true
-  
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
   config.hostmanager.ignore_private_ip = false
@@ -25,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'devstack.local'
   
   config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = 'vendor/cookbooks'
     chef.json = {
       run_list: ['recipe[devstack_cookbook::default]']
     }
