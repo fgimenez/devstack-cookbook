@@ -2,7 +2,7 @@
 bundle
 
 rm -rf vendor/cookbooks
-bundle exec berks vendor vendor/cookbooks 
+bundle exec berks vendor
 
 vagrant plugin install vagrant-omnibus
 vagrant plugin install vagrant-hostmanager

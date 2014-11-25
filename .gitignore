@@ -1,4 +1,4 @@
 *~
 .vagrant
 src/horizon
-vendor
+berks-cookbooks
