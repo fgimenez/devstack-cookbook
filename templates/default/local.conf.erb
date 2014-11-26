@@ -13,25 +13,24 @@ SCREEN_LOGDIR=$DEST/logs
 
 #Swift Requirements
 SWIFT_HASH=011688b44136573e209e
-
-##Swift
-disable_service n-obj
+SWIFT_REPLICAS=1
+SWIFT_DATA_DIR=$DEST/data
 enable_service s-proxy s-object s-container s-account
 
-#Enabled services
-##Neutron
-#disable_service n-net
-#enable_service q-svc
-#enable_service q-agt
-#enable_service q-dhcp
-#enable_service q-l3
-#enable_service q-meta
-#enable_service neutron
+# keystone is now configured by default to use PKI as the token format which produces huge tokens.
+# set UUID as keystone token format which is much shorter and easier to work with.
+KEYSTONE_TOKEN_FORMAT=UUID
 
-##Heat
-#ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+# Change the FLOATING_RANGE to whatever IPs VM is working in.
+# In NAT mode it is subnet VMware Fusion provides, in bridged mode it is your local network.
+# But only use the top end of the network by using a /27 and starting at the 224 octet.
+FLOATING_RANGE=10.0.2.224/27
 
-##Ceilometer
-#ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
-#ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
+# Enable auto assignment of floating IPs. By default Sahara expects this setting to be enabled
+EXTRA_OPTS=(auto_assign_floating_ip=True)
 
+# Enable logging
+SCREEN_LOGDIR=$DEST/logs/screen
+
+# Enable Sahara
+enable_service sahara
