@@ -1,7 +1,7 @@
 #!/bin/sh
 bundle
 
-rm -rf vendor/cookbooks
+rm -rf berks-cookbooks
 bundle exec berks vendor
 
 vagrant plugin install vagrant-omnibus
