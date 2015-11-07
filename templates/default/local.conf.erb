@@ -11,23 +11,7 @@ VERBOSE=True
 LOG_COLOR=False
 SCREEN_LOGDIR=$DEST/logs
 
-#Swift Requirements
-SWIFT_HASH=011688b44136573e209e
-SWIFT_REPLICAS=1
-SWIFT_DATA_DIR=$DEST/data
-enable_service s-proxy s-object s-container s-account
-
-# keystone is now configured by default to use PKI as the token format which produces huge tokens.
-# set UUID as keystone token format which is much shorter and easier to work with.
-KEYSTONE_TOKEN_FORMAT=UUID
-
-# Change the FLOATING_RANGE to whatever IPs VM is working in.
-# In NAT mode it is subnet VMware Fusion provides, in bridged mode it is your local network.
-# But only use the top end of the network by using a /27 and starting at the 224 octet.
-FLOATING_RANGE=10.0.2.224/27
-
-# Enable auto assignment of floating IPs. By default Sahara expects this setting to be enabled
-EXTRA_OPTS=(auto_assign_floating_ip=True)
-
-# Enable Sahara
-enable_service sahara
+FLOATING_RANGE=192.168.1.224/27
+FIXED_RANGE=10.11.12.0/24
+FIXED_NETWORK_SIZE=256
+FLAT_INTERFACE=eth0
