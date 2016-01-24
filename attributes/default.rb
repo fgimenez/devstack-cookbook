@@ -1,6 +1,5 @@
 default['devstack_cookbook']['database_password'] =
   default['devstack_cookbook']['rabbit_password'] =
-  default['devstack_cookbook']['service_token'] =
   default['devstack_cookbook']['service_password'] =
   default['devstack_cookbook']['admin_password'] = 'openstack'
 
