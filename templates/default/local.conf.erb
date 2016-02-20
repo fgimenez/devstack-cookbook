@@ -10,14 +10,10 @@ VERBOSE=True
 LOG_COLOR=False
 SCREEN_LOGDIR=$DEST/logs
 
-FLOATING_RANGE=192.168.1.224/27
-FIXED_RANGE=10.11.12.0/24
-FIXED_NETWORK_SIZE=256
-FLAT_INTERFACE=eth0
-
-# heat
-enable_service h-eng h-api h-api-cfn h-api-cw
-IMAGE_URL_SITE="http://download.fedoraproject.org"
-IMAGE_URL_PATH="/pub/fedora/linux/releases/21/Cloud/Images/x86_64/"
-IMAGE_URL_FILE="Fedora-Cloud-Base-20141203-21.x86_64.qcow2"
-IMAGE_URLS+=","$IMAGE_URL_SITE$IMAGE_URL_PATH$IMAGE_URL_FILE
+# magnum requires the following to be set correctly
+PUBLIC_INTERFACE=eth0
+enable_plugin magnum https://git.openstack.org/openstack/magnum
+# Enable barbican service and use it to store TLS certificates
+# For details http://docs.openstack.org/developer/magnum/dev/dev-tls.html
+enable_plugin barbican https://git.openstack.org/openstack/barbican
+VOLUME_BACKING_FILE_SIZE=20G
