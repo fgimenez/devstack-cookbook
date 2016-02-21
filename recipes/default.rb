@@ -13,6 +13,8 @@ end
 git node['devstack_cookbook']['devstack_path'] do
   repository node['devstack_cookbook']['repository']
   action :checkout
+  user 'vagrant'
+  group 'vagrant'
 end
 
 template File.join(node['devstack_cookbook']['devstack_path'], 'local.conf') do
