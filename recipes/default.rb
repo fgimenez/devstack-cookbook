@@ -4,12 +4,18 @@ include_recipe 'apt'
   package pkg
 end
 
-execute 'clone devstack repo' do
-  command "sudo rm -rf devstack && git clone https://github.com/openstack-dev/devstack.git && chown -R vagrant:vagrant ./devstack"
-  cwd node['devstack_cookbook']['src_path']
+directory node['devstack_cookbook']['src_path'] do
+  user 'vagrant'
+  group 'vagrant'
+  recursive true
 end
 
-template "#{node['devstack_cookbook']['devstack_path']}/local.conf" do
+git node['devstack_cookbook']['devstack_path'] do
+  repository node['devstack_cookbook']['repository']
+  action :checkout
+end
+
+template File.join(node['devstack_cookbook']['devstack_path'], 'local.conf') do
   source 'local.conf.erb'
   variables({database_password: node['devstack_cookbook']['database_password'],
              rabbit_password: node['devstack_cookbook']['rabbit_password'],
