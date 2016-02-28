@@ -13,13 +13,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.ignore_private_ip = false
   config.hostmanager.include_offline = true
 
-  config.vm.box = 'trusty64'
-  config.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
+  config.vm.box = 'rboyer/ubuntu-trusty64-libvirt'
 
   config.vm.network :private_network, ip: '33.33.33.11'
 
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ['modifyvm', :id, '--memory', '6020', '--cpus', '4']
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.memory = 6020
+    libvirt.nested = true
+    libvirt.machine_virtual_size = 80
   end
 
   config.vm.hostname = 'devstack.local'

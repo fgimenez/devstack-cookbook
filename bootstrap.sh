@@ -11,7 +11,7 @@ vagrant plugin install vagrant-shell-commander
 vagrant hostmanager
 
 vagrant destroy -f
-vagrant up --provision
+vagrant up --provision --provider=libvirt
 
 vagrant sh -c 'cd /opt/stack/devstack && ./stack.sh'
 vagrant sh -c "git config --global user.email '$GIT_EMAIL'"
