@@ -17,10 +17,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network :private_network, ip: '33.33.33.11'
 
+  config.vm.provider :virtualbox do |v|
+    v.memory = 6020
+    v.cpus = 4
+  end
+
   config.vm.provider :libvirt do |libvirt|
     libvirt.memory = 6020
     libvirt.nested = true
     libvirt.machine_virtual_size = 80
+    libvirt.cpus = 4
   end
 
   config.vm.hostname = 'devstack.local'
