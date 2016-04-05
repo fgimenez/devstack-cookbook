@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.ignore_private_ip = false
   config.hostmanager.include_offline = true
 
-  config.vm.box = 'rboyer/ubuntu-trusty64-libvirt'
+  config.vm.box = 'ubuntu/trusty64'
 
   config.vm.network :private_network, ip: '33.33.33.11'
 
